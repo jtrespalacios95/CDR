@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-
+from datetime import datetime
 file = open("test.txt")
 line = file.readline()
 head = False
@@ -22,6 +22,13 @@ def insert(key,value):
             row_obj[key] = value.strip()
         else:
             row_obj [key] = row_obj[key] + ", " + value.strip()
+
+def export_csv (list):
+    aux = json.dumps(list)
+    df = pd.read_json(aux)
+    name = datetime.now().strftime('%Y%m%d%H%M%S')
+
+    df.to_csv('csv/BAF-'+name+'.csv', index=False, sep='|')
 
 
 while line != '':

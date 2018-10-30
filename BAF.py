@@ -22,7 +22,8 @@ def get_value(line):
     return var.replace(',', '')
 
 def  get_value_object (line):
-    pass
+    if line.split(':')[0] in specialField:
+        pass
 
 
 
